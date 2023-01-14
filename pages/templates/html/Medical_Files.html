@@ -1,0 +1,42 @@
+{% extends 'html\base2.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    <title>Medical Files</title>
+{% endblock title %}
+
+{% block content %}
+
+<center><h1>Select a meeting from the list of meetings below to upload a file<h1></center>
+<div class="container w-70">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">DOCTOR</th>
+        <th scope="col">DATE</th>
+        <th scope="col">TIME</th>
+      </tr>
+    </thead>
+ 
+    {% for item in Appointment %} 
+    {% if user.username == item.patient.user_patient.username  %}
+    <tbody>
+      <tr>
+        <td scope="row" ><h6>{{item.doctor.user_doctor.first_name|capfirst}} {{item.doctor.user_doctor.last_name}}</h6></td>
+        <td scope="row" ><h6>{{item.appointment_date}}</h6></td>
+        <td scope="row"><h6>{{item.start_time}}</h6></td>
+      </tr>
+    </tbody>
+    {% endif %}
+    {% endfor %}
+    
+<div class="container w-25">
+<form method="POST" action="{% url 'medical_files' %}"  name="update" enctype="multipart/form-data">
+  {% csrf_token %}
+{{Appointments_Form|crispy}}
+
+<button  class="btn btn-primary mb-5"  type ="submit">submit</button>
+</form>
+</div>
+
+{% endblock content %}
+

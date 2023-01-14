@@ -1,0 +1,24 @@
+{% extends 'html\base1.html' %}
+
+{% block title %}
+    <title>Patient - Register/Login</title>
+{% endblock title %}
+
+{% block content %}
+</br>
+</br>
+</br></br>
+</br>
+</br>
+<div class="container"><center><h2><i><i><p class ="text-white h2">{{p_text}}</p></i></h2><center>
+</br>
+</br>
+</br>
+    <div class="d-grid gap-2 col-6 mx-auto" stylesheet='patient_page'>
+      <button class="btn btn-primary " type="button"><a class="text-dark h4" href="{% url 'login_request'%}">login</a></button>
+      <button class="btn btn-primary" type="button"><a class="text-dark h4" href="{% url 'register'%}">registration</a></button>
+    </div>
+</div>
+  
+</p>
+{% endblock content %}

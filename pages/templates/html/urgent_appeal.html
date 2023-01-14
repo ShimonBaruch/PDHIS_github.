@@ -1,0 +1,22 @@
+{% extends 'html\base2.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    <title>Urgent Appeal</title>
+{% endblock title %}
+
+{% block content %}
+
+<div class="container"><center><h2><i>{{urgent_appeal_text}}</i></h2><center>
+
+    <center><form method="POST" class ="mt-5 col-6" action ="{%url 'messege_to_patient'%}" >
+        {% csrf_token %}
+        {{form|crispy }}
+    </br>
+        <button  class="btn btn-primary mb-5" type ="submit">Submit-Messege</button>
+    </form></center>
+
+
+
+</div> 
+
+{% endblock content %}

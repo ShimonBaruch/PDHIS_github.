@@ -1,0 +1,40 @@
+{% extends 'html\base2.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    <title>View Appointments</title>
+{% endblock title %}
+
+{% block content %}
+
+<center><h2><i><p class ="text-white h2">All meetings</p></i></h2><center>
+<br>
+<br>
+<div class="container w-70">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col"><i><p class ="text-white h2">DOCTOR</p></i></th>
+        <th scope="col"><i><p class ="text-white h2">DATE</p></i></th>
+        <th scope="col"><i><p class ="text-white h2">TIME</p></i></th>
+        <th scope="col"><i><p class ="text-white h2">Doctor Rate</p></i></th>
+        
+      </tr>
+    </thead>
+ 
+    {% for item in Appointment %} 
+    {% if user.username == item.patient.user_patient.username  %}
+    <tbody>
+      <tr>
+        <td scope="row" ><i><p class ="text-white h2">{{item.doctor.user_doctor.first_name|capfirst}} {{item.doctor.user_doctor.last_name|capfirst}}</p></i></td>
+        <td scope="row" ><i><p class ="text-white h2">{{item.appointment_date}}</p></i></td>
+        <td scope="row"><i><p class ="text-white h2">{{item.start_time}}</p></i></td>
+        <td scope="row"><i><p class ="text-white h2"></h6>{{item.doctor.rate}}$</p></i></td>
+        
+      </tr>
+    </tbody>
+    {% endif %}
+    {% endfor %}
+    
+
+
+{% endblock content %}

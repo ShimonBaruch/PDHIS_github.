@@ -1,0 +1,59 @@
+{% extends 'html\base2.html' %} {% load bootstrap5 %} {% block title %}
+{% load crispy_forms_tags %}
+<title>Update-Appointments</title>
+{% endblock title %} {% block content %}
+
+
+
+<div class="container w-70">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">DOCTOR</th>
+          <th scope="col">DATE</th>
+          <th scope="col">TIME</th>
+        </tr>
+      </thead>
+      
+      <center><p class ="text-dark h5">{{update_appointment_text}}</p></center>
+      <center><p class ="text-dark h5">{{update_appointment_text2}}</p></center>
+      
+      {% for item in app %} 
+      {% if user.username == item.patient.user_patient.username  %}
+      <tbody>
+        <tr>
+          <td scope="row" ><h6>{{item.doctor.user_doctor.first_name|capfirst}} {{item.doctor.user_doctor.last_name}}</h6></td>
+          <td scope="row" ><h6>{{item.appointment_date}}</h6></td>
+          <td scope="row"><h6>{{item.start_time}}</h6></td>
+          <form method="GET" action="{% url 'update_appointment' %}" value="{{item}}" id="{{item}}" name="update">
+          <td><div class="form-check">
+            <input class="form-check-input"  name="selectapp" type="radio" value="{{item}}" id="selectapp" >
+          </div></td>
+        </tr>
+      </tbody>
+      {% endif %}
+      {% endfor %}
+    </table>
+    <center><div class="container w-70">
+        <div class="card" style="width: 20rem;">
+            
+            <div class="card-body">
+              
+              <input type="date" class="form-control" name="date" id="date" >
+            </br>
+              <center><input type="time" name="time" id="time"></center>
+            </br>
+            <button type="submit" class="btn btn-info">Update</button>
+            </div>
+          </div>
+        </div></center>
+  </div>
+ </form>
+  </center>
+
+
+
+
+
+
+    {% endblock content %}

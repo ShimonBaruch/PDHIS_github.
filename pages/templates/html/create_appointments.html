@@ -1,0 +1,56 @@
+{% extends 'html\base2.html' %} {% load bootstrap5 %} {% block title %}
+{% load crispy_forms_tags %}
+<title>Create-Appointments</title>
+{% endblock title %} {% block content %}
+{% if patient.priority >= 5 %}
+<div class="container w-25">
+  <p class ="text-dark h5">{{create_appointments_text}}</p>
+<form  method="GET" action="{% url 'create_appointments' %}" name='select'>
+  
+</br>
+  <select  class="form-select" aria-label=".form-select-lg" id="myselect" name="myselect">
+    <option selected>Department</option>
+    <option value='1'>Otorhinolaryngology</option>
+    <option value='2'>Cardiology</option>
+    <option value='3'>Oncology</option>
+    <option value='4'>Dermatologist</option>
+    <option value='5'>Endocrinologist</option>
+    <option value='6'>Gastroenterologist</option>
+    <option value='7'>Hematologist</option>
+    <option value='8'>Nephrologists</option>
+    <option value='9'>Neurologists</option>
+    <option value='10'>Ophthalmologist</option>
+  </select>
+</br>
+  <center><button type="submit" class="btn btn-info">Select Department</button></center>
+</br>
+</form>
+</div>
+<center>
+    <div class="container w-25">
+        <form  method="POST" action="{% url 'create_appointments' %}" name='Chosen_Doctor' id="Chosen_Doctor" name="Chosen_Doctor">
+ <select name = "Chosen_Doctor" class="form-select"  aria-expanded="false">
+    <option selected>Doctor</option>
+    
+{% for doc in alldocs%}
+    {% if doc != None  %}
+    
+    <option value="{{doc}}">DR. {{doc.user_doctor.first_name|capfirst}} {{doc.user_doctor.last_name|capfirst}}</option>
+    {% endif %}
+    {%endfor%}
+    {% csrf_token %}
+    {{Appointments__Form|crispy}}
+</select></center>
+</br>
+
+<center><button type="submit" class="btn btn-info">create</button></center>
+</br>
+</form>
+{% else %}
+<center><h2><i><p class ="text-white h2">Patient is not authorised for this service!</i></p></h2></center>
+{% endif %}
+
+    {% endblock content %}
+
+
+

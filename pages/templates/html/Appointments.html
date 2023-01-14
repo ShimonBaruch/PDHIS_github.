@@ -1,0 +1,70 @@
+{% extends 'html\base2.html' %}
+
+{% block title %}
+    <title>Appointments</title>
+{% endblock title %}
+
+{% block content %}
+{% if UserPatientOrNot   %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    {{message}}
+  </div>
+{% endfor %}
+{% endif %}
+
+
+
+<div class="container"><center><h2><i>{{appointments_text}}</i></h2><center></div>
+<div class="container">
+  <div class="row align-items-center vh-50">
+      <div class="col-2 mx-auto">
+        
+          <div class=" card-transparent">
+              <div class="card-body d-flex flex-column align-items-center "style="width: 20rem;">
+                  <p class="card-text"><h5><i>This option allows you to make an appointment directly </i><h5></p>
+                  <a  href="{% url 'create_appointments'%}" class="btn btn-info">Appointment Directly</a>
+              </div>
+            
+          </div>
+        </div>
+      <div class="col-2 mx-auto">
+        <div class=" card-transparent">
+            <div class="card-body d-flex flex-column align-items-center"style="width: 20rem;">
+                <p class="card-text"><h5><i>This option allows you to make an appointment through the secretary</i><h5></p>
+                <a href="{% url 'messegetoseretary'%}" class="btn btn-info">Appointment Via Secretry</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-2 mx-auto">
+      <div class=" card-transparent">
+          <div class="card-body d-flex flex-column align-items-center" style="width: 20rem;">
+        </br>
+              <p class="card-text"><h5><i>
+                This option allows you to delete or update an existing appointment</i><h5></p>
+              <div class="container w-70">
+                <form  method="GET" action="{% url 'appointment_delete' %}" name='myoption1'>
+                    <button type="submit" class="btn btn-info">Delete</button>
+                    </form>
+                </br>
+                    <form  method="GET" action="{% url 'update_appointment' %}" name='myoption2'>
+                        <button type="submit" class="btn btn-info">Update</button>
+                        </form>
+                    
+                
+                   
+          </div>
+      </div>
+  </div>
+  </div>
+</div>
+
+{% elif UserPatientOrNot == index %}
+<center><h1><i>USER :'{{user}}' IS NOT A PATIENT [log in as a patient]</i></h1></center>
+{% endif %}
+
+
+{% endblock content %}
