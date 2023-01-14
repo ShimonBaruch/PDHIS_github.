@@ -1,0 +1,27 @@
+{% extends 'html/base3.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<center><div class="col-sm-6">
+  <form role="form" name="ajax-form" id="ajax-form" method="post" class="form-main" action="{% url 'contactdo' %}">
+  {% csrf_token %}
+  
+   {{form|crispy}}
+    <div class="row">            
+        <button type="submit" class="btn btn-primary btn-shadow btn-rounded w-md" id="send">Send</button>
+      </div><!-- /col -->
+    
+
+  </form> <!-- /form -->
+</div></center> <!-- end col -->
+
+{% endblock content %}
+
+
+
+
+
+
+
+

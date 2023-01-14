@@ -1,0 +1,108 @@
+{% extends 'html/base3.html' %}
+{% load static %}
+
+{% block title %}
+    <title>PDHIS-homepage</title>
+{% endblock title %}
+
+{% block content %}
+<center><div class="container">
+  <h2>New Articals</h2>
+  <br>
+</div>
+<head>
+<style>
+    * {
+        box-sizing: border-box;
+        
+      }
+      
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      
+      
+      .column {
+        float: left;
+        width: 25%;
+        padding: 0 10px;
+     
+        
+      }
+      
+     
+      .row {
+        margin: 0 -5px;
+      
+    }
+      
+     
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      } 
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+    max-width: 350px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+  
+  
+  
+  .card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  .card button:hover {
+    opacity: 0.7;
+  }
+</style>
+</head>
+
+<div class="row">
+    <div class="column">
+        <div class="card">
+            <img src="{% static 'images/p6.jpg'%}" alt="Denim Jeans" style="width:100%">
+            <h3>Strategy for preventing the progression of chronic leukemia to aggressive disease</h3>
+            <p>A study from Washington University School of Medicine in St. Louis suggests a strategy for preventing a chronic, slow-growing type of blood cancer from progressing to an aggressive form of leukemia</p>
+            <a href="https://www.news-medical.net/news/20221229/Study-suggests-a-strategy-for-preventing-the-progression-of-chronic-leukemia-to-aggressive-disease.aspx" target="_blank"><p><button>View Artical</button></p></a>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <img src="{% static 'images/p5.jpg'%}" alt="Denim Jeans" style="width:100%">
+            <h2>How Could the Metaverse Transform Healthcare?</h2>
+            <p>The Metaverse is a virtual environment under development by Meta (formerly Facebook), with numerous potential applications in the healthcare field.</p>
+            <a href="https://www.news-medical.net/health/How-Could-the-Metaverse-Transform-Healthcare.aspx" target="_blank"><p><button>View Artical</button></p></a>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <img src="{% static 'images/p7.jpg'%}" alt="Denim Jeans" style="width:100%">
+            <h2>What Mutations of SARS-CoV-2 are Causing Concern?</h2>
+            <p>As viruses are exposed to environmental selection pressures, they mutate and evolve, generating variants that may possess enhanced virulence.</p>
+            <a href="https://www.news-medical.net/health/What-Mutations-of-SARS-CoV-2-are-Causing-Concern.aspx" target="_blank"><p><button>View Artical</button></p></a>
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock content %}
+
+
