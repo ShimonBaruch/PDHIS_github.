@@ -1,0 +1,28 @@
+{% extends 'html\base1.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    <title>Patient-Login</title>
+{% endblock title %}
+
+{% block content %}
+<div class = "container">
+</br>
+<center><h2><i>Login to PDHIS</i></h2></center>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    {{message}}
+  </div>
+{% endfor %}
+{% endif %}
+{% csrf_token %}
+<center><form method="POST" class ="mt-5 col-6" action ="{%url 'login_request'%}" >
+    {% csrf_token %}
+    {{form|crispy }}
+</br>
+    <button  class="btn btn-primary mb-5" type ="submit">Login</button>
+</form></center>
+    
+</div>
+<p class="text-dark"><h3></h3></p>
+{% endblock content %}
