@@ -1,0 +1,26 @@
+{% extends 'html/base1.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>PDHIS-doctor</title>
+{% endblock title %}
+
+
+{% block content %}
+  <div class="container">
+    <br>
+    <center><h3><i>Welcome Doctor</i></h3></center>
+    
+    <br>
+    <center>
+    <form method="POST" class="mt-3 col-3" action ="{%url 'login_request'%}" >
+        {% csrf_token %}
+        {{form|crispy }}
+        
+      <br>
+    <button class="btn btn-primary mb-5" type="submit">Login</button>
+    </form>
+    <p><a href="{% url "reset_password" %}">Forgotten your password?</a></p>
+  </center>
+   </div>
+{% endblock content %}
