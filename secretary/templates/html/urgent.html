@@ -1,0 +1,80 @@
+<DOCTYPE html>
+    <html>
+       <body>
+        <center>
+            <h1>Schedule an Urgent Appointment for the Requesting Doctor</h1>
+            <br><br>
+           
+            
+            <h3>List of all Appointments for  Doctors </h3>
+            
+            <table border="3" height="400" width="600">
+                <tr>
+                <th>Doctor</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Date of Appointment</th>
+                </tr>
+                <tr>
+                    <colgroup>
+                        <col span="2">
+                        {% for item in Appointment %}
+                        {% if item.doctor|length <= 10 %}
+                        <col  style="background-color:green">
+                        {% else %}
+                        <col  style="background-color:blue">
+                    {% endif %}
+                <td>{{ item.doctor.user_doctor.last_name }}</td>
+                <td>{{ item.start_time }}</td>
+                <td>{{ item.end_time }}</td>
+                <td>{{ item.appointment_date}}</td>
+                </tr>
+            
+                {% endfor%}
+            </table>
+            <br><br>
+           
+                
+             
+         <form action="addurgentappointment/" method="post">
+             {% csrf_token %}
+             Doctor Name:<br>
+             <input name="doctor_name">
+             <br><br>
+             Date of Appointment:<br>
+             <input name='day'>
+             <br><br>
+             Start time:<br>
+             <input name='start_time'>
+             <br><br>
+             End time:<br>
+             <input name='end_time'>
+             <br><br>
+            Patient First Name:<br>
+            <input name="patient_first_name">
+            <br><br>
+            Patient Last Name:<br>
+            <input name="patient_last_name">
+            <br><br>
+            Patient Phone Number:<br>
+            <input name="patient_phone_number">
+            <br><br>
+            Patient Email:<br>
+            <input name="patient_email">
+            <br><br>
+            Patient Identity:<br>
+            <input name="patient_identity">
+            <br><br>
+            Priority:<br>
+            <input name="priority">
+            <br><br>
+          
+            <input type="submit" value="Update urgent Appointment">
+         </form>
+         
+      
+            
+         </center>
+    
+        </body>
+    </html>

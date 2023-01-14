@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+   <body>
+    <center>
+        {% for x in Doctorlist %}
+       <h1>List of appointment made for Doctor {{x}}  </h1>
+    <table border="3" height="250" width="600">
+        <tr>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Identity</th>
+          <th>Email</th>
+        </tr>
+        {% for y in Appointments %}
+        {% if y.doctor == x %}
+        <tr>
+          <td>{{ y.patient.user_patient.first_name }}</td>
+          <td>{{ y.patient.user_patient.last_name }}</td>
+          <td>{{ y.patient.id_number }}</td>
+          <td>{{ y.patient.user_patient.email }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        </table>-
+        {% endfor %}
+        <br><br><a href="{% url 'home' %}">Return to Home Page</a> 
+        
+     </center>
+
+    </body>
+</html>

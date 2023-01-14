@@ -1,0 +1,37 @@
+<DOCTYPE html>
+    <html>
+       <body>
+        <center>
+            <h1>Schedule an Appointment</h1>
+         <form action="addappointment/" method="post">
+             {% csrf_token %}
+            Patient Name:<br>
+            <input name="patient_name">
+            <br><br>
+            Patient Identity:<br>
+            <input name="patient_identity">
+            <br><br>
+            Priority:<br>
+            <input name="priority">
+            <br><br>
+            Doctor Name:<br>
+            <input name="doctor_name">
+            <br><br>
+            Date of Appointment:<br>
+            <input name='day'>
+            <br><br>
+            Start time:<br>
+            <input name='start_time'>
+            <br><br>
+            End time:<br>
+            <input name='end_time'>
+            <br><br>
+            <input type="submit" value="Submit">
+         </form>
+         
+      
+            
+         </center>
+    
+        </body>
+    </html>

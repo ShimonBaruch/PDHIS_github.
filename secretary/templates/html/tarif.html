@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- {% load static %}-->
+ <html>
+  <!--<link rel="stylesheet" href="{ static 'coloumn.css' %}"> -->
+ <body>
+  <center>
+     <h1>
+     <form action="contacting/" method="post">   
+         {% csrf_token %}
+ <label for="doctors">Choose a doctor's tarif of appointment</label>
+ <div>
+ <select name="doctors" id="doctors">
+     <option value="Tal - costs 350 shekels">Tal - 350 shekels</option>
+     <option value="Ziv - costs 300 shekels">Ziv - 300 shekels</option>
+     <option value="Gart - costs 250 shekels">Gart - 250 shekels</option>
+     <option value="Mor - costs 450 shekels">Mor - 450 shekels</option>
+     <option value="Nissan - costs 550 shekels">Nissan - 550 shekels</option>
+ </select>
+</div>
+ <input type="submit" value="Select the doctor">
+</form>
+</h1>
+  </center>
+ </body>
+ </html>

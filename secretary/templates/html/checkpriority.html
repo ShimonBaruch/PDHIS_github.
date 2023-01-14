@@ -1,0 +1,16 @@
+<DOCTYPE html>
+    <html>
+       <body>
+        <center>
+         <form action= "{%url 'checkid' %}" method="post">
+             {% csrf_token %}
+            Identity:<br>
+            <input name="identity">
+            <br><br>
+            <input type="submit" value="Submit">
+         </form>
+            
+         </center>
+    
+        </body>
+    </html>

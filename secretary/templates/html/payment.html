@@ -1,0 +1,35 @@
+<DOCTYPE html>
+    <html>
+       <body>
+        <center>
+            <h1>Rescheduling an Urgent Appointment</h1>
+            <br><br>
+     
+                <h3>List of appointments for today</h3>
+                <table border="3" height="350" width="600">
+                    <tr>
+                      <th>Doctor's Name</th>
+                      <th>Patient's Name</th>
+                      <th>Patient's identity</th>
+                      <th>start_time of appointment</th>
+                      <th>end_time of appointment</th>
+                    </tr>
+                    {% for x in todayevents %}
+                    <tr>
+                    <td>{{ x.doctor.user_doctor.first_name}} {{ x.doctor.user_doctor.last_name}}</td>
+                    <td>{{ x.patient.user_patient.first_name}} {{ x.patient.user_patient.last_name}}</td>
+                    <td>{{ x.patient.id_number}}</td>
+                    <td>{{ x.start_time }}</td>
+                    <td>{{ x.end_time }}</td>
+                    </tr>
+                    {% endfor %}
+                    </table>
+                    
+                    <br><br><a href="{% url 'home' %}">Return to Home Page</a> 
+         
+            
+            
+         </center>
+    
+        </body>
+    </html>

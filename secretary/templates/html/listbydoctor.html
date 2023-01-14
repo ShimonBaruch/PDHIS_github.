@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+   <body>
+    <center>
+       <h1>List of appointment made for Doctor {{doc}}  </h1>
+    <table border="3" height="350" width="600">
+        <tr>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Identity</th>
+          <th>Email</th>
+        </tr>
+        {% for x in newpatients %}
+        <tr>
+         <td>{{ x.patient.user_patient.first_name }}</td>
+         <td>{{ x.patient.user_patient.last_name }}</td>
+         <td>{{ x.patient.id_number }}</td>
+         <td>{{ x.patient.user_patient.email }}</td>
+        </tr>
+        {% endfor %}
+        </table>-
+        <br><br><a href="{% url 'home' %}">Return to Home Page</a> 
+        
+     </center>
+
+    </body>
+</html>

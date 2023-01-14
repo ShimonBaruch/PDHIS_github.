@@ -1,0 +1,43 @@
+<DOCTYPE html>
+    <html>
+       <body>
+        <center>
+
+            <h1>APPOINTMENTS FOR {{ month }}  {{ year }}</h1>
+
+            {{ cal|safe }}
+
+         <form action="checkdates/" method="post">
+             {% csrf_token %}
+             <h3>For what Doctor Do You Want to See the Dates of his Appointments</h3>
+            enter Doctor's name:<br>
+            <input type="text" name="doctor_name">
+            <input type="date" name="date" id="appointment">
+            <br><br>
+            <input type="submit" value="Submit">
+         </form>
+            
+         
+<center><h2><i><p class ="text-white h2">All Doctors</p></i></h2><center>
+    <br>
+    <br>
+    <div class="container w-70">
+      
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col"><i><p class ="text-white h2"></p></i></th>
+              </tr>
+            </thead>
+            
+            <tbody>
+                {% for item in doc %} 
+                <tr>
+                  <td scope="row" ><i><p class ="text-white h2">*{{item.user_doctor.last_name}}</p></i></td>
+                </tr>
+              </tbody>
+    </div>
+         </center>
+        </body>
+        </html>
+    {% endfor %}

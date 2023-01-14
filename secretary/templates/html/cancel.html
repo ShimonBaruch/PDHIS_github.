@@ -1,0 +1,58 @@
+<DOCTYPE html>
+    <html>
+       <body>
+        <center>
+            <h1>Cancelling an Appointment for a Doctor</h1>
+            <br><br>
+            <h3>List of Patient's Appointments</h3>
+            <table border="3" height="350" width="600">
+                <tr>
+                  <th>First name</th>
+                  <th>Last name</th>
+                  <th>Identity</th>
+                  <th>doctor's name</th>
+                  <th>Date appointed</th>
+                </tr>
+                {% for x in mypatients %}
+                <tr>
+                  <td>{{ x.patient.user_patient.first_name }}</td>
+                  <td>{{ x.patient.user_patient.last_name }}</td>
+                  <td>{{ x.patient.id_number }}</td>
+                  <td>{{ x.doctor.user_doctor.last_name }}</td>
+                  <td>{{ x.appointment_date}}</td>
+                </tr>
+                {% endfor %}
+                </table>
+                <br><br>
+                <h3>List of Doctor's Appointments</h3>
+                <table border="3" height="350" width="600">
+                    <tr>
+                      <th>Doctor name</th>
+                      <th>Patient name</th>
+                      <th>Date appointment</th>
+                    </tr>
+                    {% for x in mypatients %}
+                    <tr>
+                    <td>{{ x.doctor.user_doctor.last_name }}</td>
+                    <td>{{ x.patient.user_patient.first_name }}</td>
+                    <td>{{x.appointment_date}}</td>
+                    </tr>
+                    {% endfor %}
+                    </table>
+            <h3>select the doctor and the date of cancellation</h3>
+          <form action="{%url 'cancellation' %}" method="post">
+             {% csrf_token %}
+            enter Doctor's name:<br>
+            <input type="text" name="doctor_name" id="doctor_name">
+            <br><br>
+            <input type="date" name="date" id="date">
+            <br><br>
+            <input type="submit" value="Submit">
+         </form> 
+         
+      
+            
+         </center>
+    
+        </body>
+    </html>

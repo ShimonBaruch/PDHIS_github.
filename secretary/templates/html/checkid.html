@@ -1,0 +1,25 @@
+<DOCTYPE html>
+    <html>
+       <body>
+        <center>
+        {% for x in patients %}
+         
+         {% if x.id_number == ident%}
+         {% if x.priority >= 1 and x.priority < 5 %}
+          <h3>THE  APPOINTMENT FOR MR/MRS  {{ x.last_name}} IDENTITY NUMBER : {{x.priority}} ,HAS LOW PRIORITY</h3>
+          {% elif x.priority >= 5 and x.priority < 8 %}
+          <h3>THE  APPOINTMENT FOR MR/MRS  {{ x.last_name}} IDENTITY NUMBER : {{x.priority}} ,HAS INBETWEEN PRIORITY</h3>
+           {% elif x.priority >= 8 and x.priority <= 10 %}
+           <h3>THE  APPOINTMENT FOR MR/MRS  {{ x.last_name}} IDENTITY NUMBER : {{x.priority}} ,HAS HIGH PRIORITY</h3>
+           <form action="{%url 'medicalsecretary_home' %}" method="get">
+           <input type ="submit" value="BACK TO MAIN PAGE">
+           </form>
+           
+         {% else %}
+           <a href="{% url 'checkpriority' %}">NOT IN ORDER. TRY AGAIN</a> 
+          {% endif %}
+          {% endif %}
+        {% endfor %}   
+        </center>
+        </body>
+    </html>

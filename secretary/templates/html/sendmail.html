@@ -1,0 +1,48 @@
+<DOCTYPE html>
+    <html>
+       <body>
+        <center>
+         {% if event.patient_identity == patient.identity %}
+         <h3>The Appointment was Successfully Added</h3>
+         <h1>THE APPOINTMENTS FOR DOCTOR {{ event.doctor_name }} ON DATE {{ event.day }}:</h1> 
+
+         <table id="table" border="3" height="150" width="600">
+             <colgroup>
+                 <col span="5">
+                 {% if myevent|length <= 10 %}
+                 <col  style="background-color:green">
+                 {% else %}
+                 <col  style="background-color:blue">
+                 {% endif %}
+             <tr>
+               <th>Patient Name</th>
+               <th>Patient Identity</th>
+               <th>Start Time</th>
+               <th>End Time</th>
+               <th>Priority</th>
+               <th >Date of appointment</th>
+             </tr>
+                 {% for x in myevent %}
+            <tr>
+             <td>{{ x.patient_name }}</td>
+             <td>{{ x.patient_identity }}</td>
+             <td>{{ x.start_time }}</td>
+             <td>{{ x.end_time }}</td>
+             <td>{{ x.priority }}</td>
+             <td >{{x.day}}</td>
+             </tr>
+             {% endfor %}
+        <h2>Send email to {{ patient.email }}:</h2>
+        <form action="mailto:patient.email" method="post" enctype="text/plain">
+         <form action='home/' method="get">
+         <input type ="submit" value="BACK TO MAIN PAGE">
+         </form>
+         {% else %}
+         <h3>ID NOT IN ORDER TRY AGAIN</h3>
+         <a href="{% url 'add' %}"></a> 
+         {% endif %}
+          {% endfor %}  
+         </center>
+         <br><br><a href="{% url 'home' %}">Return to Home Page</a> 
+        </body>
+    </html>

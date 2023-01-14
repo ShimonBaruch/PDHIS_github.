@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+ <html>
+  <!--<link rel="stylesheet" href="{ static 'coloumn.css' %}"> -->
+ <body>
+  <center>
+  <h1>List of the rescheduling of an urgent Appointment:</h1> 
+  <br><br>
+  <h3>Doctors new appointments:</h3>
+  <table id="table" border="3" height="150" width="600">
+      <tr>
+        <th>Patient name</th>
+        <th>Doctor name</th>
+        <th>priority</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+      </tr>
+     <tr>
+        {% for x in appointment%}
+        <td>{{ x.patient.user_patient.first_name }} {{ x.patient.user_patient.last_name }}</td>
+        <td>{{ x.doctor.user_doctor.last_name}}</td>
+        <td>{{ x.patient.priority }}</td>
+        <td>{{ x.start_time }}</td>
+        <td>{{ x.end_time }}</td>
+      </tr>
+      {% endfor%}
+      </table>
+      <br><br>
+      <h3>Patients new appointments:</h3>
+        <table id="table" border="3" height="150" width="600">
+            <tr>
+              <th>Patient name</th>
+              <th>Doctor's name</th>
+              <th >Date of appointment</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+            </tr>
+           <tr>
+            {% for x in appointment%}
+            <td>{{ x.patient.user_patient.first_name }} {{ x.patient.user_patient.last_name }}</td>
+            <td>{{ x.doctor.user_doctor.last_name }}</td>
+            <td>{{ x.appointment_date }}</td>
+            <td>{{ x.start_time }}</td>
+            <td>{{ x.end_time }}</td>
+          </tr>
+            {% endfor%}
+            
+            </table>
+      <br><br><a href="{% url 'home' %}">Return to Home Page</a> 
+  </center>
+ </body>
+ </html>

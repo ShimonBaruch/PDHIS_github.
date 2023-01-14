@@ -1,0 +1,41 @@
+{% block content %}
+{% load crispy_forms_tags %}
+<h2>UPLOAD</h2>
+
+<center><h1>Select a meeting from the list of meetings below to upload a file<h1></center>
+    <center><div class="container w-25">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">DOCTOR</th>
+            <th scope="col">PATIENT</th>
+            <th scope="col">DATE</th>
+            <th scope="col">TIME</th>
+          </tr>
+        </thead>
+     
+        {% for item in Appointment %} 
+        
+        <tbody>
+          <tr>
+            <td scope="row" ><h3>{{item.doctor.user_doctor.first_name|capfirst}} {{item.doctor.user_doctor.last_name|capfirst}}</h3></td>
+            <td scope="row" ><h3>{{item.patient.user_patient.first_name|capfirst}} {{item.patient.user_patient.last_name|capfirst}}</h3></td>
+            <td scope="row" ><h3>{{item.appointment_date}}</h3></td>
+            <td scope="row"><h3>{{item.start_time}}</h3></td>
+          </tr>
+        </tbody>
+    </div></center>
+        {% endfor %}
+        
+    <div class="container w-25">
+    <form method="POST" action="{% url 'upload' %}"  name="update" enctype="multipart/form-data">
+      {% csrf_token %}
+    {{Appointments_Form|crispy}}
+    Patient last Name:<br>
+            <input name="patient_name">
+    <button  class="btn btn-primary mb-5"  type ="submit">submit</button>
+    </form>
+    </div>
+{% endblock %}
+
+

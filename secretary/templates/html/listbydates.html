@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+   <body>
+    <center>
+       <h1>List of appointment made {{yesterday}}</h1>
+    <table border="3" height="150" width="600">
+        <tr>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Identity</th>
+          <th>Email</th>
+          <th>doctor's name</th>
+          <th>Date appointed</th>
+        </tr>
+    
+        {% for x in mypatients %}
+        
+        <tr>
+        <td>{{ x.patient.user_patient.first_name }}</td>
+        <td>{{ x.patient.user_patient.last_name }}</td>
+        <td>{{ x.patient.id_number }}</td>
+        <td>{{ x.patient.user_patient.email }}</td>
+        <td>{{ x.doctor.user_doctor.first_name}} {{ x.doctor.user_doctor.last_name}}</td>
+        <td>{{ yesterday}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+        <br><br>
+        <form action="{% url 'getpatients'%}">
+      <select name="doctors" >
+        <option disabled="true" selected>Select Doctor</option>
+        {% for doc in doctor %}
+        <option value="{{doc.user_doctor.last_name}}">{{doc.user_doctor.first_name}} {{doc.user_doctor.last_name}} </option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="click">
+    </form> 
+     </center>
+
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- {% load static %}-->
+ <html>
+  <!--<link rel="stylesheet" href="{ static 'coloumn.css' %}"> -->
+ <body>
+  <center>
+  <h1>THE APPOINTMENTS FOR DOCTOR {{ doctor }} ON {{ dateappointment }}:</h1> 
+  
+  <table id="table" border="3" height="150" width="600">
+      <colgroup>
+          <col span="4">
+          {% if appointments_list|length <= 10 %}
+          <col  style="background-color:green">
+          {% else %}
+          <col  style="background-color:blue">
+          {% endif %}
+      <tr>
+        <th>Patient Name</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Priority</th>
+        <th>Date of appointment</th>
+      </tr>
+          {% for x in appointments_list %}
+     <tr>
+        <td>{{ x.patient.user_patient.first_name }} {{ x.patient.user_patient.last_name }}</td>
+        <td>{{ x.start_time }}</td>
+        <td>{{ x.end_time }}</td>
+        <td>{{ x.patient.priority }}</td>
+        <td >{{x.appointment_date}}</td>
+      </tr>
+      {% endfor %}
+      </table>
+      <br><br><a href="{% url 'home' %}">Return to Home Page</a> 
+  </center>
+ </body>
+ </html>

@@ -1,0 +1,59 @@
+<DOCTYPE html>
+    <html>
+       <body>
+        <center>
+            <h1>Rescheduling an Urgent Appointment</h1>
+            <br><br>
+     
+                <h3>New List of Doctor Appointments after Cancellation</h3>
+                <table border="3" height="350" width="600">
+                    <tr>
+                      <th>Date appointment</th>
+                      <th>Doctor name</th>
+                      <th>Patient name</th>
+                      <th>Patient ID</th>
+                      <th>start_time of appointment</th>
+                      <th>end_time of appointment</th>
+                    </tr>
+                    {% for x in appointments %}
+                    <tr>
+                    <td>{{ x.appointment_date}}</td>
+                    <td>{{ x.doctor.user_doctor.last_name}}</td>
+                    <td>{{ x.patient.user_patient.first_name }} {{ x.patient.user_patient.last_name }}</td>
+                    <td>{{ x.patient.id_number}}</td>
+                    <td>{{ x.start_time }}</td>
+                    <td>{{ x.end_time }}</td>
+                    </tr>
+                    {% endfor %}
+                    </table>
+                            <br><br>
+            <h3>Wride down the details of the rescheduled Appointment</h3>
+         <form action="{%url 'rescheduling'%}" method="post">
+             {% csrf_token %}
+             enter Patient's name:<br><br>
+             <input type="text" name="patient_name" id="patient_name">
+             <br><br>
+             enter doctor's name:<br><br>
+             <input type="text" name="doctor_name" id="doctor_name">
+             <br><br>
+            enter Patient's identity:<br><br>
+            <input type="text" name="identity" id="identity">
+            <br><br>
+            enter new date of appointment:<br><br>
+            <input type="date" name="date" id="date">
+            <br><br>
+            enter start_time:<br>
+            <input type="time" name="start_time" id="start_time">
+            <br><br>
+            enter end_time:<br>
+            <input type="time" name="end_time" id="end_time">
+            <br><br>
+            <input type="submit" value="Submit">
+         </form>
+         
+      
+            
+         </center>
+    
+        </body>
+    </html>
